@@ -1,41 +1,42 @@
-ASIMIONESEI DANIEL 311CD
-Tema2-Căutări de Produse
-Pentru prima parte a temei am implementat urmatoarele functii:
-1)createTree:creez un arbore cu pointeri la functiile date si il returnez;
-2)isEmpty:verific daca arborele este neinitializat;
-3)search:caut un element trimis ca parametru in arbore, iar daca exista 
-il returnez , iara daca nu , returnez NULL;
-4)minimum:returnez nodul cel mai din stanga al arborelui care este cel mai mic;
-5)maximum:returnez nodul cel mai din dreapta al arborelui, care este cel mai mare;
-6)succesore:returnez succesorul unui nod trimis ca parametru, iar succesorul poate fi:
-elementul minim din subarborele drept al nodului, dacă nodul are subarbore drept sau
-dacă nodul nu are subarbore drept, el va fi element maxim într-un subarbor,părintele 
-rădăcinii acestui subarbore este nodul succesor;
-7)predecesor:returnez predecesorul unui nod trimis ca parametru:elementul maxim
-din subarborele stâng al nodului, dacă nodul are subarbore stâng sau dacă nodul
-nu are subarbore stâng, el va fi element minim într-un subarbore ,iar părintele
-rădăcinii acestui subarbore este nodul succesor;
-8)updateHeight:actualizez inaltimea unui nod , prin adunarea lui 1 la inaltimea 
-maxima a celor doi copii;
-9)max:returnez valoarea maxima;
-10)refreshHeights:recalculez inaltimea tuturor nodurilor aflate pe calea de la root
-catre nodul trimis ca parametru de jos in sus;
-11)height:returneaza inaltimea nodului;
-12)avlRotateLeft:rotesc subarborele care are ca radacina pe x la stanga;
-13)avlRoateRight:rotesc subarborele care are ca radacina pe x la dreapta;
-14)avlGetBalance:returneaza diferenta de inaltime dintre copii unui nod;
-15)avlFixUp:reechilibreaza arborele asupracaruia sau facut inserari sau stergeri;
-16)parcurgerelista:parcurg lista de duplicate pana la ultimul nod;
-17)addList:adaug un nou nod la lista de duplicate(daca exista mai mult de
-doua noduri,adica end nu coincide cu primul nod ) , iar daca aceasta lista nu
-exista(exista doar un nod, ala din arbore) , o creez prin adaugarea celui de 
-al doilea nod;
-18)insert:cara adauga un nou nod in arbore,si in lista corespunzatore
-Pentru aceasta functie am implementat:createTreeNode,refreshHeights,avlFixUp
-,addList;
-19)delete:sterge un nod din arbore sau din lista daca este duplicat si restabileste 
-conexiunea dintre noduri , iar apoi distrugen nodul, recalculam inaltimea arborelui
- si il rebalansam;
-20)destroyTree:distruge fiecare nod din arbore si lista , iar pentru asta folosesc o
- functie recursiva numita Destroy;
+311CD ASIMIONESEI DANIEL
+Pentru rezolvarea problemei mi-am definit urmatoarele structuri:
+Oras-salvez coordonatele oraselor.
+Centrala-salvez coordonatele centralei.
+Matrice-aceasta structura contine campurile m(pentru linii marcate 0/-1)
+,t(pentru linii taiate0/-1),i(pentru zerouri incadrate 0/-1),v(pentru costul drumului),
+b(pentru liniile barate 0/-1).
+Initializez toate campurile matricei la 0 , adica nu exista linii taiate ,marcate etc.
+Am deschis fisierul de citire , am cititi coordonatele si am calculat toate 
+distantele dintre orase si centale.Am salvat o copie a acestor coordonate pentru
+calcularea in final al costului minim.
+Calculez minimul pentru fiecare linie si il scad din acea linie pentru a face zerouri.
+Calculez minimul pentru fiecare coloana si il scad din acea coloana facnd zerouri.
+Caut cuplajul maxim prin operatia de incadrare si barare a zerourilor astfel:
+-imi calculez un minim de comparatie pentru liniile cu zerouri;
+-se incadreaza un 0 situat pe linia cu cele mai putine zerouri si se bareaza ;
+toate celelate zerouri asezate pe linia si coloana zeroului taiat;
+-se repeta aceasta operatie pana cand toate zerourile matricei  au fost incadrate sau barate;
+Verific daca s-a obtinut cate un 0 incadrat pe fiecare linie si coloana ,s-a obtinut
+cuplajul maxim. In caz contrar se trece la etapa urmatoare.
+Marchez liniile si coloanele astfel pana cand nu mai exista posibilitatea sa 
+se obtina alte linii si coaloane marcate:
+    • se marchează liniile care nu conţin nici un „0” încadrat;
+    • se marchează coloanele care conţin zerouri tăiate pe liniile deja marcate;
+    • se marchează liniile care conţin un „0” încadrat pe coloanele deja marcate;
+In noua matrice obtinuta se taie toate liniile nemarcate si coloanele marcate.
+Minorantul elementelor ramase netaiate se adauga elementelor dublu taiate , se 
+scade din elementele netaiate , lasand neschimbate elementele simplu taiate.
+Marcarea elementelor taiate incadrate etc se face prin valoarea -1.Daca au 
+valoarea 0 inseamna ca ele nu sunt taiate, marcate, incadtrate sau barate. 
+Se initializeaza iarasi campurile matricei(taiat , marcat , barat, incadrat) la 0.
+Si se repeta pasii de la incadrarea zerourilor pana cand se gaseste cuplajul maxim.  
+OBS!
+De la testul 4 incolo programul intra intro bucla infinita si nu stiu de ce.Mi-am 
+stors creierii sa vad ce nu e bine si am observat ca la un moment dat se taie toate
+liniile si toate coloanele si nu mai are unde sa caute minimul ca sa-l scada si astfel
+nu se mai creaza cate un zero barat pe fiecare linie si coloana.
+Modivul, nu-l stiu.Poate poti sa mi-l zici tu.Chiar as vrea sa stiu.Mersii mult!    
+
+
+
 
