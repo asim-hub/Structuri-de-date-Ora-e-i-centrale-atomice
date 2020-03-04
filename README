@@ -1,67 +1,41 @@
 ASIMIONESEI DANIEL 311CD
-Functia add_club:Declar un club pe care il initializez cu NULL, apoi aloc
-memorie pentru campurile clubului.Daca lista de cluburi este nula , noul club
-va fi primul club, altfel il adaug la urma listei.
-Functia initializare club:initializez lista de cluburi cu NULL ,iar aceasta
-functie se foloseste de functia add_club pe care o apeleaza, pentru adaugarea
-de cluburi noi.
-Functia add_player:aloc memorie pentru un nou jucator ,aloc memorie petru
-campurile name si position,nodurile urmatoare vor fi null pentru ca nu se stie 
-daca in lista exista jucatori sau nu.Caut clubul trimis ca parametru iar daca 
-jucatorul nu exista il adaug in echipa tratand 3 cazuri:cand el poate fi pus 
-la inceputul listei , cand poate fi pus la sfarsitul listei si cand poate fi 
-pus in interiorul listei.
-Functia transfer_player:caut clubul, respectiv jucatorul,atat in lista de 
-accidentati cat si in lista de neaccidentati, si apelez functia add_player
-pentru a-l adauga la noua echipa, iar apoi il sterg de la vechea echipa.
-Pentru toate aceste operatii declar noi pointeri pentru a nu pierde 
-inceputurile listelor.La stergerea jucatorului din lista tratez iarasi pe trei
-cazuri : cand e primul , ultimul sau in interiorul listei.
-Functia remove_player:caut echipa si jucatorul trimis functiei,verific daca
-exista ,iar stergerea lui o tratez pe cazuri:cand e primul , cad e
-ultimul sau cand e in interiorul listei.Pentru toate aceste lucruri declar
-noi pointeri pentru a nu pierde capetele listelor.Cautarea jucatorului pentru 
-a fi sters o fac atat in lista de jucatori neaccidentati cat si in cea cu 
-accidentati.
-Functia update_score:caut in lista clubul , apoi in lista aferenta jucatorul,
-daca il gases in lista de jucatori neaccidentati il sterg de acolo si apelez 
-functia add_player cu noile informatii despre el pe care le am salvat inainte 
-sa il sterg , iar daca il gasesc in lista de jucatori accidenti ii modific doar
-scorului.
-Functia update_game position :cauta clubul ,respectiv jucatorul.Daca il gaseste
-il sterge dar pastreaza datele si reapeleza functia add_player pentru a-l adauga
-listei cu noile date.
-Functia add_injury:caut jucatorul in lista de neaccidentati , aloc memorie
-pentru un nou jucator in care voi pune datele jucatorui primite de functie.
-Sterg jucatorul din lista de neaccidentati(trei cazuri) si adaug nou jucator
-la lista de accidentati.
-Functia recover_from_injury:Caut jucatorul in lista si ii iau informatiile
-pentru a apela functia add_player.Apoi il sterg din lista neaccidentatilor.
-Functia destroy_player_list:declar doi pointeri pentru a umbla prin lista 
-pe care ii plasez pe pozitii consecutive incepand de la primul nod.Pe cel 
-din fata il sterg , apoi il reactualizez cu al doilea pointer , pe care la
-randul lui il mut cu un pas mai in fata pentru a nu pierde inceputul listei.
-Dezaloc toare campurile alocate la functia add_player.
-Functia destroy_club_player:Pentru fiecare club dezaloc lista de jucatori
-cu functia destroy_player, apoi dezaloc si lista de cluburi.
-Functia union_team:  aloc memorie pentru un nou club si ma folosesc de functia
-add_player pentru a adauga jucatorii celor doua echipe si returnez lista de
-jucatori a noului club.Alocarea meoriei si pentru club nu doar pentru lista 
-este pentru a putea apela funcia add_player.
-Functia get_best_player:Aloc memorie pentru un jucator si in incep cautarea in 
-fiecare lista a fiecarui club comparand scorul jucatorilor de pe pozitia ceruta cu scorul jucatorului alocat de mine , care initial este sub limita : -101. 
-Functia get_top_player:aloc memorie pentru un club, apoi pentru nr jucatori, 
-in care voi pune informatiile celor mai buni jucatori, apoi ordonez lista si
-o returnez.
-Functia get_player_by_score:merge pe principiul functiei anterioare doar ca 
-aici conditia de cautare este scorul;
-Functia get_player_by_position:creez o noua lista de jucatori  caut toti 
-jucatorii de pe pozitia ceruta in lisele cluburilor pe care ii adaug noii 
-liste, pe care la urma o ordonez si o returnez;
-Functia get_best_team:pentru fiecare pozitie apelez functia 
-get_player_by_position  care imi returneaza o lista din care imi iau jucatorii
-cei mai buni de pe pozitia corespunzatoare , in functie de cati mi se cer
-(de exemplu pentru portari iau primul jucator ).Aici profit de faptul ca 
-jucatorii sunt ordonati descrescator dupa scor si deci am sa ma opresc la 
-jucatorii de la inceputl listei.Pe acesti jucatori ii adaug la noua lista
- pe care o ordonez si o returnez.
+Tema2-Căutări de Produse
+Pentru prima parte a temei am implementat urmatoarele functii:
+1)createTree:creez un arbore cu pointeri la functiile date si il returnez;
+2)isEmpty:verific daca arborele este neinitializat;
+3)search:caut un element trimis ca parametru in arbore, iar daca exista 
+il returnez , iara daca nu , returnez NULL;
+4)minimum:returnez nodul cel mai din stanga al arborelui care este cel mai mic;
+5)maximum:returnez nodul cel mai din dreapta al arborelui, care este cel mai mare;
+6)succesore:returnez succesorul unui nod trimis ca parametru, iar succesorul poate fi:
+elementul minim din subarborele drept al nodului, dacă nodul are subarbore drept sau
+dacă nodul nu are subarbore drept, el va fi element maxim într-un subarbor,părintele 
+rădăcinii acestui subarbore este nodul succesor;
+7)predecesor:returnez predecesorul unui nod trimis ca parametru:elementul maxim
+din subarborele stâng al nodului, dacă nodul are subarbore stâng sau dacă nodul
+nu are subarbore stâng, el va fi element minim într-un subarbore ,iar părintele
+rădăcinii acestui subarbore este nodul succesor;
+8)updateHeight:actualizez inaltimea unui nod , prin adunarea lui 1 la inaltimea 
+maxima a celor doi copii;
+9)max:returnez valoarea maxima;
+10)refreshHeights:recalculez inaltimea tuturor nodurilor aflate pe calea de la root
+catre nodul trimis ca parametru de jos in sus;
+11)height:returneaza inaltimea nodului;
+12)avlRotateLeft:rotesc subarborele care are ca radacina pe x la stanga;
+13)avlRoateRight:rotesc subarborele care are ca radacina pe x la dreapta;
+14)avlGetBalance:returneaza diferenta de inaltime dintre copii unui nod;
+15)avlFixUp:reechilibreaza arborele asupracaruia sau facut inserari sau stergeri;
+16)parcurgerelista:parcurg lista de duplicate pana la ultimul nod;
+17)addList:adaug un nou nod la lista de duplicate(daca exista mai mult de
+doua noduri,adica end nu coincide cu primul nod ) , iar daca aceasta lista nu
+exista(exista doar un nod, ala din arbore) , o creez prin adaugarea celui de 
+al doilea nod;
+18)insert:cara adauga un nou nod in arbore,si in lista corespunzatore
+Pentru aceasta functie am implementat:createTreeNode,refreshHeights,avlFixUp
+,addList;
+19)delete:sterge un nod din arbore sau din lista daca este duplicat si restabileste 
+conexiunea dintre noduri , iar apoi distrugen nodul, recalculam inaltimea arborelui
+ si il rebalansam;
+20)destroyTree:distruge fiecare nod din arbore si lista , iar pentru asta folosesc o
+ functie recursiva numita Destroy;
+
